@@ -2,6 +2,8 @@ const os = require("os");
 // -> Dados do sistema
 // console.log(os);
 
+const log = require("./logger");
+
 setInterval(() => {
 	// -> Log para limpar antes de mostrar novamente
 	console.clear();
@@ -35,4 +37,5 @@ setInterval(() => {
 
 	// --> Log em formato de tabela
 	console.table(stats);
+	log(`${JSON.stringify(stats)}\n`);
 }, 1000);
