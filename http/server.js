@@ -6,6 +6,11 @@ http
 	.createServer((req, res) => {
 		const file = req.url === "/" ? "index.html" : req.url;
 		const filePath = path.join(__dirname, "public", file);
+		const extname = path.extname(filePath);
+
+		const allowedFileTypes = [".html", ".css", ".js"];
+		const allowed = allowedFileTypes.find((item) => item === extname);
+
 		fs.readFile(filePath, (error, content) => {
 			if (error) throw error;
 			res.end(content);
